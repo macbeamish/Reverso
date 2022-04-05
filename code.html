@@ -27,7 +27,7 @@
 <!-- Nav -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand brand-nav" href="#"><img src="img/white-on-red-logo-only.png" class="pb-1" height="25" alt="logo-icon">Reverso</a>
+        <a class="navbar-brand brand-nav" href="#"><img src="img/white-on-red-logo-only.png" class="pb-1" height="25" alt="logo-icon">REVERSO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -62,9 +62,59 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            function hundOver(){
-                                alert("Hello World");
+                            //get string from form reverse button clicked
+                            function getRevString(){
+                            document.getElementById("alert").classList.add("invisible")
+
+                                let userString = document.getElementById("userString").value;
+                                let revString = reverseString(userString);
+
+                                displayrevString(revString);
+
                             }
+
+                            //get string from form scramble button hit
+                            function getScramString(){
+                                document.getElementById("alert").classList.add("invisible")
+                                
+                                    let userString = document.getElementById("userString").value;
+                                    let scramString = scrambleString(userString);
+                                
+                                    displayScramString(scramString);
+                                
+                                }
+
+                            //reverse string
+                            function reverseString(userString){
+                                let revString =[];
+
+                                //reverse string using for loop
+                                for (let index = (userString.length - 1); index >= 0; index--) {
+                                    revString += userString[index];
+                                    
+                                }
+                                return revString;
+                            }
+
+                            //scramble string
+                            function scrambleString(userString){
+                                let scramString = userString.split('').sort(function(){return 0.5-Math.random()}).join('');
+                                return scramString      
+                            }
+
+                            //displayresult of reversed string
+                            function displayrevString(reverseString){
+                            document.getElementById("msg").innerHTML = `Your string reversed is: ${reverseString}`;
+                            document.getElementById("alert").classList.remove("invisible");
+                            }
+
+                            //display result of scrambled string
+                            function displayScramString(scrambleString){
+                            document.getElementById("msg").innerHTML = `Your string scrambled is: ${scrambleString}`;
+                            document.getElementById("alert").classList.remove("invisible");
+
+                            }
+
 
 
                         </code>
